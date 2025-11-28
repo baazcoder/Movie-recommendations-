@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>🎬 Movie Recommender System</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1 class="title">🎬 Movie Recommender System</h1>
+
+    <label for="movie-select">Choose a movie:</label>
+    <select id="movie-select">
+      {% for movie in movies %}
+        <option value="{{ movie }}">{{ movie }}</option>
+      {% endfor %}
+    </select>
+
+    <button id="recommend-btn">Recommend</button>
+
+    <div id="results" class="results hidden">
+      <h2>Top 5 movies similar to <strong id="selected-movie"></strong>:</h2>
+      <ul id="recommendations"></ul>
+    </div>
+
+    <div id="loading" class="hidden">🔍 Finding recommendations...</div>
+    <div id="error" class="error hidden"></div>
+  </div>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>
