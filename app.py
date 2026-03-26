@@ -2,6 +2,9 @@ from flask import Flask, render_template, jsonify, request
 import pickle
 import pandas as pd
 import httpx
+from dotenv import load_dotenv
+load_dotenv()
+import os
 
 app = Flask(__name__, static_folder='static', template_folder='templates')
 
@@ -13,7 +16,7 @@ with open("similarity.pkl", "rb") as f:
 movie_titles = movies_df["title"].tolist()
 
 # TMDB API Key
-TMDB_API_KEY = "85a024e477abab988a19b7546497a3c5"
+TMDB_API_KEY = os.getenv("TMBD_API_KEY")
 
 # HTTP Client (sync)
 HTTP_CLIENT = httpx.Client(timeout=10.0)
